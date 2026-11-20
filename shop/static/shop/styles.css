@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+header {
+    background: #263859;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+
+main {
+    padding: 30px;
+}
+
+.product-card {
+    background: white;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
+    display: inline-block;
+    min-width: 200px;
+}
+
+button {
+    background: #263859;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}

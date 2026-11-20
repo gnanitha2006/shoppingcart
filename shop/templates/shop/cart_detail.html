@@ -1,0 +1,63 @@
+{% load static %}
+<link rel="stylesheet"
+      href="{% static 'shop/styles.css' %}">
+{% for item in items %}
+{% if messages %}
+
+    {% for message in messages %}
+
+        <p>{{ message }}</p>
+
+    {% endfor %}
+
+{% endif %}
+<div class="cart-item">
+
+    <h3>{{ item.product.name }}</h3>
+
+    <p>Price: ₹{{ item.product.price }}</p>
+
+    <p>Available Stock: {{ item.product.stock }}</p>
+
+    <p>Current Quantity: {{ item.quantity }}</p>
+
+    <p>Line Total: ₹{{ item.line_total }}</p>
+
+    <!-- Update Quantity -->
+
+    <form method="post"
+          action="{% url 'shop:cart_update' item.product.id %}">
+
+        {% csrf_token %}
+
+        <input
+            type="number"
+            name="quantity"
+            value="{{ item.quantity }}"
+            min="0"
+            max="{{ item.product.stock }}"
+            required
+        >
+
+        <button type="submit">
+            Update Quantity
+        </button>
+
+    </form>
+
+    <!-- Remove Product -->
+
+    <form method="post"
+          action="{% url 'shop:cart_remove' item.product.id %}">
+
+        {% csrf_token %}
+
+        <button type="submit">
+            Remove Product
+        </button>
+
+    </form>
+
+</div>
+
+{% endfor %}
